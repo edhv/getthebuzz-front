@@ -12,11 +12,6 @@
         <div v-if="posts.length > 0" id="active-post" class="active-post" v-bind:class="{active: isActivePost}">
             <post-detail id="post-detail" v-if="activePost != null" v-bind:i="activePost" v-bind:content="posts[activePost]" v-bind:class="{active: isActivePost}"></post-detail>
         </div>
-        <div class="header-items" v-if="windowWidth >= 640 || (windowWidth < 640 && isActivePost == false)">
-            <div v-if="index < 2" class="item item--big" v-for="(item, index) in posts" v-bind:key="item.id">
-                <post-block v-bind:content="item" v-bind:i="index"></post-block>
-            </div>
-        </div>
         <div class="masonry-items" v-if="windowWidth >= 640 || (windowWidth < 640 && isActivePost == false)">
             <div v-masonry transition-duration="0.3s" item-selector=".item" v-if="posts && posts.length" column-width=".item--sizer">
                 <div class="item--sizer"></div>
