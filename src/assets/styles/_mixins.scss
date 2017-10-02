@@ -1,0 +1,8 @@
+@mixin block($w, $h:"") {
+    width: $w;
+    @if $h != "" {
+        padding-bottom: $h;
+    } @else {
+        padding-bottom: $w;
+    }
+}

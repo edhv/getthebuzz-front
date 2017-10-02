@@ -1,0 +1,63 @@
+.timestamp {
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 9px 11px;
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+
+.user {
+    /* DDW NEWS: */
+    color: #FFFFFF;
+    padding: 9px 11px;
+    background: $purple;
+    clear: both;
+    float: left;
+    border-radius: 2px;
+}
+
+.text,
+.text--light,
+.title {
+    clear: both;
+    float: left;
+    margin-top: 12px;
+    color: #FFFFFF;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.50);
+}
+
+.post__content {
+    position: absolute;
+    height: calc(100% - 48px);
+    width: calc(100% - 48px);
+    padding: 24px;
+    overflow: hidden;
+    margin: 0;
+    margin-left: 5px;
+    background-size: cover !important;
+    /* prepare animation */
+    margin-top: 0;
+    opacity: 0;
+    animation: 600ms cubic-bezier(0.23, 1, 0.32, 1) forwards slidein;
+}
+
+.header-items .post__content {
+    margin-top: 0;
+}
+
+.post__media {}
+
+.post__media-container {
+    overflow: hidden;
+}
+
+@keyframes slidein {
+    from {
+        margin-top: 120px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 0;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,600');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:100,300,400,600');
+*,
+html,
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    text-align: left;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+}
+
+@media (max-width: 639px) {
+    .timestamp {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+    }
+    
+    .user {
+        font-family: Montserrat;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+    }
+    
+    .text,
+    .title {
+        font-family: Montserrat;
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.46px;
+    }
+
+    .text--light {
+        font-family: Montserrat;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 0.46px;
+        line-height: 18px;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 959px) {
+    .timestamp {
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+    }
+    
+    .user {
+        font-family: Montserrat;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        line-height: 18px;
+    }
+    
+    .text,
+    .title {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 600;;
+        letter-spacing: 0.46px;
+        line-height: 24px;
+    }
+
+    .text--light {
+        font-family: Montserrat;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 0.46px;
+        line-height: 18px;
+    }
+}
+
+@media (min-width: 960px) {
+    .timestamp {
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+    }
+    
+    .user {
+        font-family: Montserrat;
+        font-size: 16x;
+        letter-spacing: 0.08em;
+    }
+    
+    .text,
+    .title {
+        font-family: Montserrat;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 0.46px;
+        line-height: 28px;
+    }
+
+    .text--light {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 300;
+        letter-spacing: 0.46px;
+        line-height: 24px;
+    }
+}
