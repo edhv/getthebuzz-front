@@ -8,7 +8,7 @@
                 <div id="post-detail__image" v-bind:style="{'background-image': 'url('+ media +')'}"></div>
             </div>
         </div>
-        <div class="post-detail__text">
+        <div id="post-detail__text" class="post-detail__text">
             <div class="post-detail__content">
                 <div class="post-detail__header">
                     <span class="timestamp">{{ time }}</span>
@@ -19,6 +19,9 @@
                     <a v-bind:href="url" target="_blank" class="source-button">visit source</a>
                 </div>
             </div>
+        </div>
+        <div class="source-link">
+            <router-link v-bind:to="{path: '/source/' + type + '/' + user}">+</router-link>
         </div>
     </div>
 </template>
@@ -118,5 +121,20 @@ export default {
     min-height: 50vh;
     max-height: 80vh;
     background-size: cover;
+}
+
+.source-link {
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    background: white;
+}
+
+.source-link > * {
+    text-decoration: none;
+    font-family: Montserrat;
+    font-size: 64px;
+    font-weight: 600;
+    color: #703BB1;
 }
 </style>

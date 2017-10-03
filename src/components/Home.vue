@@ -14,7 +14,8 @@
         <div v-if="posts.length > 0" id="active-post" class="active-post" v-bind:class="{active: isActivePost}">
             <post-detail id="post-detail" v-if="activePost != null" v-bind:i="activePost" v-bind:content="posts[activePost]" v-bind:class="{active: isActivePost}"></post-detail>
         </div>
-        <div class="masonry-items" v-if="windowWidth >= 640 || (windowWidth < 640 && isActivePost == false)">
+
+        <div class="masonry-items" v-if="isActivePost == false">
             <div v-masonry transition-duration="0.3s" item-selector=".item" v-if="posts && posts.length" percent-position="true" column-width=".item--sizer">
                 <div class="item--sizer"></div>
                 <div class="gutter--sizer"></div>
@@ -23,8 +24,9 @@
                 </div>
             </div>
         </div>
-        <div id="loader" v-infinite-scroll="getNextPosts" infinite-scroll-disabled="busy" infinite-scroll-distance="100">
-            <div v-if="posts.length > 1 && busy" class="loader__container--bottom ">
+
+        <div id="loader" v-infinite-scroll="getNextPosts" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+            <div v-if="posts.length > 1 && busy && !isActivePost" class="loader__container--bottom ">
                 <div class="loader">
                     <span class="loader-block"></span>
                     <span class="loader-block"></span>
@@ -36,6 +38,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -106,10 +109,12 @@ export default {
         },
         closeActivePost: function() {
             this.isActivePost = false
+            this.busy = false;
             var a = document.getElementById('active-post')
             a.style.height = 0
         },
         openActivePost: function() {
+            this.busy = true;
             var a = document.getElementById('active-post')
             var b = document.getElementById('post-detail')
 
@@ -123,7 +128,7 @@ export default {
                 } else {
                     var c = document.getElementById('post-detail__image');
                     c.style.height = 0 + 'px'
-                    c.style.minHeight = '80px'
+                    c.style.minHeight = '80px' 
                 }
             }
 
