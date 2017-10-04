@@ -12,7 +12,7 @@
         <div v-if="posts.length > 0" id="active-post" class="active-post" v-bind:class="{active: isActivePost}">
             <post-detail id="post-detail" v-if="activePost != null" v-bind:i="activePost" v-bind:content="posts[activePost]" v-bind:class="{active: isActivePost}"></post-detail>
         </div>
-        <div class="masonry-items" v-if="windowWidth >= 640 || (windowWidth < 640 && isActivePost == false)">
+        <div class="masonry-items" v-if="isActivePost == false">
             <div v-masonry transition-duration="0.3s" item-selector=".item" v-if="posts && posts.length" column-width=".item--sizer">
                 <div class="item--sizer"></div>
                 <div v-if="index > 1" v-masonry-tile class="item" v-bind:class="getBlockSize(index)" v-for="(item, index) in posts" v-bind:key="item.id">
@@ -177,6 +177,7 @@ export default {
     watch: {
         '$route.params.username'(from, to) {
             this.getPosts()
+            
         },
         // '$route.params.open'(from, to) {
         //     // if (this.$route.params.open == null) {
