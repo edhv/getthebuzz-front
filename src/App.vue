@@ -2,6 +2,7 @@
     <div id="app">
         <div class="container">
             <app-header></app-header>
+            <div class="pusher"></div>
             <router-view></router-view>
         </div>
     </div>
@@ -25,9 +26,12 @@ export default {
     components: {
         AppHeader
     }
+
 }
 </script>
 
 <style>
-
+.pusher {
+    padding-top: 60px;
+}
 </style>

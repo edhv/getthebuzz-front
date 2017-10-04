@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="source-link">
-            <router-link v-bind:to="{path: '/source/' + type + '/' + user}">+</router-link>
+            <router-link v-bind:to="{path: '/source/' + type + '/' + user}" v-on:click.native="goBack">+</router-link>
         </div>
     </div>
 </template>
