@@ -1,7 +1,7 @@
 <template>
     <div class="app-header">
         <router-link to="/"><img class="logo" src="../assets/svg/getthebuzz_logo.svg"></router-link>
-        
+        <div class="source-name">{{ source }}</div>
         <div class="menu-toggle" v-bind:class="{ active: isActive }" v-on:click="toggle">
             <div class="bar"></div>
         </div>
@@ -20,7 +20,7 @@
                 <li v-for="(item, index) in sources" v-bind:key="item.id">
                     <router-link v-on:click.native="hideDropdown" v-bind:to="{path: '/source/' + item.type + '/' + item.username}">{{ item.username }}</router-link>
                     <!-- <a v-bind:href="'#/source/?username=' + item.username + '&type=' + item.type">{{ item.username }}</a> -->
-                    </li>
+                </li>
             </ul>
         </div>
     </div>
@@ -36,7 +36,8 @@ export default {
         return {
             isActive: false,
             sources: [],
-            errors: []
+            errors: [],
+            source: ''
         }
     },
     methods: {
@@ -48,8 +49,11 @@ export default {
                 this.isActive = true
             }
         },
-        hideDropdown: function () {
+        hideDropdown: function() {
             this.isActive = false;
+        },
+        alertMe: function() {
+            alert('me');
         }
     },
     created() {
@@ -61,6 +65,13 @@ export default {
             .catch(e => {
                 this.errors.push(e)
             })
+    },
+    watch: {
+        '$route.params'(from, to) {
+            this.source = from['username']
+           
+
+        }
     }
 }
 </script>
@@ -68,6 +79,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .app-header {
+    max-width: 1799px;
+    position: fixed !important;
     width: 100%;
     background: #fff;
     height: 60px;
@@ -82,6 +95,22 @@ export default {
     padding: 5px;
     margin-top: 10px;
     margin-left: 60px;
+}
+
+.source-name {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    margin-right: -25%;
+    width: 50%;
+    text-align: center;
+    /* DDW NEWS FEED: */
+    font-family: 'Montserrat';
+    font-size: 18px;
+    font-weight: 600;
+    color: #703BB1;
+    letter-spacing: 0.66px;
+    line-height: 60px;
 }
 
 .menu-toggle {
@@ -103,10 +132,14 @@ h3 {
     text-align: center;
 }
 
-@media screen and (max-width: 639px){
+@media screen and (max-width: 639px) {
     h3 {
         font-size: 20px;
         margin: 0 40px;
+    }
+
+    .logo {
+        display: none;
     }
 }
 
